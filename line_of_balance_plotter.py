@@ -11,14 +11,19 @@ def generate_single_plot(x1, x2, x3, x4):
     horizontal_2x = [x3, x4]
     drop_line = [x4, x4]
 
-    join_1y = [0, 100]
+    join_1y = [0, 20]
     join_2y = [0, 0]
-    join_3y = [100, 100]
+    join_3y = [20, 20]
 
-    plt.plot(vertical_1x, join_1y, 'k-')
-    plt.plot(vertical_2x, join_1y, 'k-')
-    plt.plot(horizontal_1x, join_2y, 'k-')
-    plt.plot(horizontal_2x, join_3y, 'k-')
+    space = np.linspace(0, 20, 5)
+    plt.yticks(space)
+    plt.ylabel("Number of units to produce")
+    plt.xlabel("Time")
+    plt.tight_layout()
+
+    plt.plot(vertical_1x, join_1y, 'k-', vertical_2x, join_1y, 'k-')
+    plt.plot(horizontal_1x, join_2y, 'k-', horizontal_2x, join_3y, 'k-')
+
     plt.plot(drop_line, join_1y, 'r--')
 
     plt.show()
@@ -44,10 +49,9 @@ def generate_multiple_plots(set_of_points):
         join_2y = [0, 0]
         join_3y = [20, 20]
 
-        plt.plot(vertical_1x, join_1y, 'k-')
-        plt.plot(vertical_2x, join_1y, 'k-')
-        plt.plot(horizontal_1x, join_2y, 'k-')
-        plt.plot(horizontal_2x, join_3y, 'k-')
+        plt.plot(vertical_1x, join_1y, 'k-', vertical_2x, join_1y, 'k-')
+        plt.plot(horizontal_1x, join_2y, 'k-', horizontal_2x, join_3y, 'k-')
+
         plt.plot(drop_line, join_1y, 'r--')
 
 
