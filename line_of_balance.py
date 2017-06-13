@@ -13,7 +13,8 @@ class LineOfBalance(object):
                  productivity_rate,
                  number_of_units_to_produce,
                  hours_per_day,
-                 days_per_week):
+                 days_per_week,
+                 ymin=0):
 
         """Create LineOfBalance() object"""
         self.activity_names = activity_names
@@ -25,6 +26,8 @@ class LineOfBalance(object):
         self.hours_per_day = hours_per_day
         self.days_per_week = days_per_week
         self.number_of_activities = len(self.activity_names)
+        self.ymax = self.number_of_units_to_produce
+        self.ymin = ymin
 
     def theoretical_gang_size(self):
         """Theoretical gang size"""
@@ -151,8 +154,9 @@ class LineOfBalance(object):
         # start_last = self.start_on_last_section()
         # end_last = self.end_on_last_section()
 
-        return [(a, b, c, d) for a, b, c, d in
-                zip(self.start_on_first_section(),
+        return [(a, b, c, d, e) for a, b, c, d, e in
+                zip(self.activity_names,
+                    self.start_on_first_section(),
                     self.end_on_first_section(),
                     self.start_on_last_section(),
                     self.end_on_last_section())]
@@ -160,7 +164,7 @@ class LineOfBalance(object):
     def generate_diagram(self):
         """Generate the line of balance diagram"""
         points_to_plot = self.generate_plot_points()
-        generate_multiple_plots(points_to_plot)
+        generate_multiple_plots(points_to_plot, self.ymin, self.ymax)
 
 def default_lob():
     """Main with default arguments"""
