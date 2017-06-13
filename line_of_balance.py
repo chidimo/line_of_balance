@@ -30,13 +30,14 @@ class LineOfBalance(object):
         self.ymin = ymin
 
     def theoretical_gang_size(self):
-        """Theoretical gang size"""
-        return [(self.productivity_rate*each) /
-                (self.hours_per_day*self.days_per_week)
-                for each in self.man_hours_per_unit]
+        """Compute theoretical gang sizes"""
+        theo_g_size = [(self.productivity_rate*each) /
+                       (self.hours_per_day*self.days_per_week)
+                       for each in self.man_hours_per_unit]
+        return [round(x, 2) for x in theo_g_size]
 
     def actual_gang_size(self):
-        """Actual gang size"""
+        """Compute actual gang sizes"""
         actual_gang_size = [2 * x for x in self.men_per_gang]
 
         for idx, item in enumerate(actual_gang_size):
@@ -50,26 +51,30 @@ class LineOfBalance(object):
                     old_gang_size = new_gang_size
 
             actual_gang_size[idx] = old_gang_size
-        return actual_gang_size
+        return list([round(x, 2) for x in actual_gang_size])
 
     def actual_output_rate(self):
-        """Actual output rate"""
-        return [self.productivity_rate * (x/y)
-                for x, y in zip(self.actual_gang_size(),
-                                self.theoretical_gang_size())]
+        """Compute actual output rates"""
+        act_out = [self.productivity_rate * (x/y)
+                   for x, y in zip(self.actual_gang_size(),
+                                   self.theoretical_gang_size())]
+        return list([round(x, 2) for x in act_out])
+        # return act_out
 
     def activity_duration_per_unit(self):
-        """Actual duration per unit"""
-        return [mhpu / (mpg * self.hours_per_day)
+        """Compute actual duration per unit"""
+        adpu = [mhpu / (mpg * self.hours_per_day)
                 for  mhpu, mpg in zip(self.man_hours_per_unit, self.men_per_gang)]
+        return [round(x, 2) for x in adpu]
 
     def start_first_to_start_last(self):
         """Docstring"""
-        return [(self.number_of_units_to_produce - 1) * self.days_per_week /
+        sftl = [(self.number_of_units_to_produce - 1) * self.days_per_week /
                 each for each in self.actual_output_rate()]
+        return [round(x, 2) for x in sftl]
 
     def start_end(self):
-        """First section start and end"""
+        """Compute four last columns concurrently. First section start and end"""
         start_first = [1]
         end_first = [self.activity_duration_per_unit()[0]]
 
@@ -77,8 +82,9 @@ class LineOfBalance(object):
         end_last = [start_last[0] + end_first[0]]
 
         for i in range(1, self.number_of_activities):
+
             if self.actual_output_rate()[i] < self.actual_output_rate()[i-1]:
-                # place buffer on bottom
+                # place buffer at bottom
                 start_first.insert(i, end_first[i-1] + self.buffer_time)
                 end_first.insert(i, start_first[i] + self.activity_duration_per_unit()[i])
 
@@ -94,7 +100,9 @@ class LineOfBalance(object):
                 start_first.insert(i, start_last[i] - \
                 self.start_first_to_start_last()[i])
                 end_first.insert(i, start_first[i] + self.activity_duration_per_unit()[i])
-        return start_first, end_first, start_last, end_last
+
+        return [round(x, 2) for x in start_first], [round(x, 2) for x in end_first],\
+        [round(x, 2) for x in start_last], [round(x, 2) for x in end_last]
 
     def start_on_first_section(self):
         """Start on first section for activity"""
@@ -160,6 +168,10 @@ class LineOfBalance(object):
         """Generate the line of balance diagram"""
         points_to_plot = self.generate_plot_points()
         generate_multiple_plots(points_to_plot, self.ymin, self.ymax)
+
+    def project_duration(self):
+        """Total project duration"""
+        return self.generate_plot_points()[-1][4]+1
 
 def default_lob():
     """Main with default arguments"""

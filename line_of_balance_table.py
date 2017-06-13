@@ -4,28 +4,6 @@ import matplotlib.pyplot as plt
 import openpyxl as OP
 from line_of_balance import default_lob
 
-def generate_plot_from_points(x1, x2, x3, x4):
-    """Generate plot from points"""
-    vertical_1x = [x1, x3]
-    vertical_2x = [x2, x4]
-    horizontal_1x = [x1, x2]
-    horizontal_2x = [x3, x4]
-    drop_line = [x4, x4]
-
-    join_1y = [0, 100]
-    join_2y = [0, 0]
-    join_3y = [100, 100]
-
-    plt.figure()
-
-    plt.plot(vertical_1x, join_1y, 'k-')
-    plt.plot(vertical_2x, join_1y, 'k-')
-    plt.plot(horizontal_1x, join_2y, 'k-')
-    plt.plot(horizontal_2x, join_3y, 'k-')
-    plt.plot(drop_line, join_1y, 'r--')
-
-    plt.show()
-
 def pyplot_table(headings, cell_values):
     """Draw the line of balance table"""
 
@@ -47,7 +25,7 @@ def pyplot_table(headings, cell_values):
     lob_table.auto_set_font_size(False)
     lob_table.set_fontsize(5)
     lob_table.scale(2, 2)
-    fig.savefig('lob.png', bbox_inches='tight', bbox_extra_artists=[lob_table])
+    fig.savefig('line_of_balance_table.png', bbox_inches='tight', bbox_extra_artists=[lob_table])
     plt.show()
 
 def excel_table(headings, cell_values):

@@ -8,13 +8,15 @@ import numpy as np
 def generate_single_plot(ex1, ex2, ex3, ex4, ymin, ymax):
     """Generate plot from points"""
 
+    fig = plt.figure(figsize=(10,8), facecolor='lightblue', edgecolor='g')
+
     label_x_position = (ex2 + ex3)//2
     label_y_position = (ymax + ymin)//2
     space = np.linspace(ymin, ymax, 5)
     plt.yticks(space)
     plt.ylabel("Number of units to produce")
     plt.xlabel("Project duration")
-    plt.tight_layout()
+    # plt.tight_layout()
 
     Path = mpath.Path
     path_data = [
@@ -29,13 +31,36 @@ def generate_single_plot(ex1, ex2, ex3, ex4, ymin, ymax):
 
     # plot and fill control points and connecting lines
     x_vals, y_vals = zip(*path.vertices)
-    plt.plot(x_vals, y_vals, 'k-')
-    plt.fill(x_vals, y_vals, 'g')
-    plt.text(label_x_position, label_y_position, "Plot")
+    plt.plot(x_vals, y_vals, 'b-')
+    plt.fill(x_vals, y_vals, 'cyan')
+    plt.text(label_x_position, label_y_position, "Activity")
     plt.plot([ex4, ex4], [ymin, ymax], 'r--')
+    plt.title("Line of Balance Illustration", color='k')
+
     # add annotations
-    # plt.annotate()
+    plt.annotate('Start on first section', xy=(ex1, ymin), xytext=(ex1, ymin+5),
+                 arrowprops=dict(arrowstyle='->'), horizontalalignment='center')
+    plt.annotate('End on first section', xy=(ex2, ymin), xytext=(ex2+5, ymin),
+                 arrowprops=dict(arrowstyle='->'), verticalalignment='right')
+    plt.annotate('Start on last section', xy=(ex3, ymax), xytext=(ex3, ymax+4),
+                 arrowprops=dict(arrowstyle='->'), horizontalalignment='center')
+    plt.annotate('End on last section', xy=(ex4, ymax), xytext=(ex4, ymax+2),
+                 arrowprops=dict(arrowstyle='->'), horizontalalignment='center')
+
+    axes = plt.gca()
+    axes.title.set_color('red')
+
+    axes.set_xlim(0, 1.1*ex4)
+    axes.set_ylim(-0.1, 1.3*ymax)
+    axes.spines['right'].set_visible(False)
+    axes.spines['top'].set_visible(False)
+
+    plt.savefig("line_of_balance_illustrator.pdf", facecolor=fig.get_facecolor(), dpi=100)
+    plt.savefig("line_of_balance_illustrator.png", facecolor=fig.get_facecolor(), dpi=100)
 
     plt.show()
 
 generate_single_plot(5, 15, 35, 45, 0, 20)
+
+
+# run line_of_balance_illustrator.py
