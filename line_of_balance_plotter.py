@@ -80,3 +80,7 @@ def generate_multiple_plots(set_of_points, ymin, ymax):
     plt.savefig("line_of_balance_curve.pdf", dpi=100)
     plt.legend()
     plt.show()
+
+def main():
+    """Docstring"""
+    pass

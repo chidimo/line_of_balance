@@ -131,7 +131,7 @@ class LineOfBalance(object):
                       self.end_on_last_section())]
         return values
 
-    def column_headings(self):
+    def column_headings(self): # add **kwargs to take additional columns
         """Column headings"""
         columns = ("Activity",
                    "Man hours per unit",
@@ -149,11 +149,6 @@ class LineOfBalance(object):
 
     def generate_plot_points(self):
         """Generate plot points"""
-        # start_first = self.start_on_first_section()
-        # end_first = self.end_on_first_section()
-        # start_last = self.start_on_last_section()
-        # end_last = self.end_on_last_section()
-
         return [(a, b, c, d, e) for a, b, c, d, e in
                 zip(self.activity_names,
                     self.start_on_first_section(),
