@@ -29,11 +29,15 @@ I don't really get the idea about licenses, but I do want this to be used freely
 
 ## Course Reminders
 
+Github doesn't render mathjax by default so you won't be able to see the mathematical equations if I included them in this readme. I have instead included a "readme.html" file which you can open in your browser on your computer.
+
+You may also use view the same equations in the accompanying "readme.ipynb" jupyter notebook.
+
 ### Known parameters - scalars
 
-1. Number of sections to produce, $n$
+1. Number of sections to produce
 2. Buffer time
-3. Desired output rate, $r$
+3. Desired output rate
 4. Hours of work per day
 5. Days of work per week
 
@@ -53,33 +57,3 @@ I don't really get the idea about licenses, but I do want this to be used freely
 7. Time of end on first section for each activity
 8. Time of start on last section for each activity
 9. Time of end on last section for each activity
-
-### Calculations
-
-The actual gang size should be a multiple (at least 2) of the number of men per gang that is closest in value to the theoretical gang size
-
-$
-\text{actual_output_rate} = \text{desired_output_rate } * \frac{\text{actual_gang_size}}{\text{theoretical_gang_size}}\\
-$
-
-$
-\text{start_on_first_section_to_last_section} = \text{desired_output_rate } * \frac{(\text{number_of_sections_to_produce } - 1) * \text{ days_per_week}}{\text{actual_output_rate}}
-$
-
-$
-\text{theoretical_gang_size} = \frac{\text{desired_output_rate } * \text{ man_hours_per_unit}}{\text{hours_per_day } * \text{ days_per_week}}
-$
-
-$
-\text{activity_duration_per_unit} = \frac{\text{ man_hours_per_unit}}{\text{men_per_gang} * \text{ hours_per_day}}
-$
-
-### Placement of Buffer time
-
-When drawing the bars for the different activities, compare the values of the actual output rate for each activity to determine where to place the buffer.
-
-If the actual output rate of the activity under consideration is smaller than that of the preceding activity (meaning that the activity in consideration is slower), place the buffer at the bottom of the graph, by adding it to the value of the time to finish last section of the preceding activity.
-
-Activity|man_hours_per_unit|men_per_gang|theoretical_gang_size|actual_gang_size|actual_output_rate|activity_duration_per_unit|start_on_first_section_to_last_section|start_on_first_section|end_on_first_section|start_on_last_section|end_on_last_section
-:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
-1|2|3|4|5|6|7|8|9|10|11|12
