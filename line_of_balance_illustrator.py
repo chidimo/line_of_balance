@@ -1,11 +1,18 @@
-"""Illustration of the various points in the line of balance
-diagram"""
+"""Line of Balance illustrator
+
+author: Chidi Orji
+email: orjichidi95@gmail.com
+github: https://github.com/Parousiaic
+license: BSD
+Please feel free to use and modify this, but keep the above information. Thanks!
+I bear no responsibility for anything you might break while using this script.
+"""
 
 import matplotlib.pyplot as plt
 import matplotlib.path as mpath
 import numpy as np
 
-def generate_single_plot(ex1, ex2, ex3, ex4, ymin, ymax):
+def make_illustrator(ex1, ex2, ex3, ex4, ymin, ymax):
     """Generate plot from points"""
 
     fig = plt.figure(figsize=(10,8), facecolor='lightblue', edgecolor='g')
@@ -35,7 +42,7 @@ def generate_single_plot(ex1, ex2, ex3, ex4, ymin, ymax):
     plt.fill(x_vals, y_vals, 'cyan')
     plt.text(label_x_position, label_y_position, "Activity")
     plt.plot([ex4, ex4], [ymin, ymax], 'r--')
-    plt.title("Line of Balance Illustration", color='k')
+    plt.title("Line of Balance Illustrator", color='k')
 
     # add annotations
     plt.annotate('Start on first section', xy=(ex1, ymin), xytext=(ex1, ymin+5),
@@ -55,12 +62,13 @@ def generate_single_plot(ex1, ex2, ex3, ex4, ymin, ymax):
     axes.spines['right'].set_visible(False)
     axes.spines['top'].set_visible(False)
 
-    plt.savefig("line_of_balance_illustrator.pdf", facecolor=fig.get_facecolor(), dpi=100)
-    plt.savefig("line_of_balance_illustrator.png", facecolor=fig.get_facecolor(), dpi=100)
+    plt.savefig("output/line_of_balance_illustrator.pdf", facecolor=fig.get_facecolor(), dpi=100)
+    plt.savefig("output/line_of_balance_illustrator.png", facecolor=fig.get_facecolor(), dpi=100)
 
     plt.show()
 
-generate_single_plot(5, 15, 35, 45, 0, 20)
+make_illustrator(5, 15, 35, 45, 0, 20)
 
-
-# run line_of_balance_illustrator.py
+if __name__ == "__main__":
+    """Only for illustration"""
+    pass

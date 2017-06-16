@@ -1,13 +1,21 @@
-"""Illustration of line of balance"""
+"""Line of Balance curve plotter
+
+author: Chidi Orji
+email: orjichidi95@gmail.com
+github: https://github.com/Parousiaic
+license: BSD
+Please feel free to use and modify this, but keep the above information. Thanks!
+I bear no responsibility for anything you might break while using this script.
+"""
 
 import matplotlib.pyplot as plt
 import matplotlib.path as mpath
 import numpy as np
 
-def generate_single_plot(ex1, ex2, ex3, ex4, ymin, ymax):
+def plot_single_activity(ex1, ex2, ex3, ex4, ymin, ymax):
     """Generate plot from points"""
 
-    fig = plt.figure(figsize=(10,8), facecolor='lightblue', edgecolor='g')
+    fig = plt.figure(figsize=(10, 8), facecolor='lightblue', edgecolor='g')
     label_x_position = (ex2 + ex3)//2
     label_y_position = (ymax + ymin)//2
     space = np.linspace(ymin, ymax, 5)
@@ -37,7 +45,7 @@ def generate_single_plot(ex1, ex2, ex3, ex4, ymin, ymax):
 
     plt.show()
 
-def generate_multiple_plots(set_of_points, ymin, ymax):
+def plot_all_activities(set_of_points, ymin, ymax):
     """Generate plot from points"""
 
     project_duration = set_of_points[-1][4] + 1
@@ -81,7 +89,7 @@ def generate_multiple_plots(set_of_points, ymin, ymax):
         # draw dropdown
         plt.plot([ex4, ex4], [ymin, ymax], 'r--')
 
-    plt.title("Line of Balance Diagram")
+    plt.title("Line of Balance Curve")
 
     plt.annotate('Total project duration is\n{} days'.format(project_duration),
                  xy=(0, 0), xytext=(project_duration/2, 1.2*ymax),
@@ -95,8 +103,8 @@ def generate_multiple_plots(set_of_points, ymin, ymax):
 
     plt.tight_layout()
 
-    plt.savefig("line_of_balance_curve.pdf", facecolor=fig.get_facecolor(), dpi=100)
-    plt.savefig("line_of_balance_curve.png", facecolor=fig.get_facecolor(), dpi=100)
+    plt.savefig("output/line_of_balance_curve.pdf", facecolor=fig.get_facecolor(), dpi=100)
+    plt.savefig("output/line_of_balance_curve.png", facecolor=fig.get_facecolor(), dpi=100)
     # plt.legend()
     plt.show()
 

@@ -1,6 +1,17 @@
-"""Line of Balance"""
-from line_of_balance_plotter import generate_multiple_plots
-import matplotlib.pyplot as plt
+"""Line of Balance
+
+author: Chidi Orji
+email: orjichidi95@gmail.com
+github: https://github.com/Parousiaic
+license: BSD
+Please feel free to use and modify this, but keep the above information. Thanks!
+I bear no responsibility for anything you might break while using this script.
+"""
+
+from line_of_balance_plotter import plot_all_activities
+from line_of_balance_table import excel_table
+
+# pylint: disable-msg=C0103
 
 class LineOfBalance(object):
     """LINE OF BALANCE"""
@@ -59,7 +70,6 @@ class LineOfBalance(object):
                    for x, y in zip(self.actual_gang_size(),
                                    self.theoretical_gang_size())]
         return list([round(x, 2) for x in act_out])
-        # return act_out
 
     def activity_duration_per_unit(self):
         """Compute actual duration per unit"""
@@ -164,16 +174,22 @@ class LineOfBalance(object):
                     self.start_on_last_section(),
                     self.end_on_last_section())]
 
-    def generate_diagram(self):
-        """Generate the line of balance diagram"""
+    def generate_curve(self):
+        """Generate the line of balance curve"""
         points_to_plot = self.generate_plot_points()
-        generate_multiple_plots(points_to_plot, self.ymin, self.ymax)
+        plot_all_activities(points_to_plot, self.ymin, self.ymax)
 
     def project_duration(self):
         """Total project duration"""
         return self.generate_plot_points()[-1][4]+1
 
-def default_lob():
+    def create_table(self):
+        """Create table from object"""
+        heads = self.column_headings()
+        vals = self.arrange_values()
+        excel_table(heads, vals)
+
+def main():
     """Main with default arguments"""
     activity_names = ['A', 'B', 'C', 'D', 'E']
     man_hours_per_unit = [100, 350, 60, 200, 150]
@@ -184,16 +200,17 @@ def default_lob():
     hours_per_day = 8
     days_per_week = 5
 
-    return LineOfBalance(activity_names,
-                         man_hours_per_unit,
-                         men_per_gang,
-                         buffer_time,
-                         productivity_rate,
-                         number_of_units_to_produce,
-                         hours_per_day,
-                         days_per_week)
+    line_object = LineOfBalance(activity_names,
+                                man_hours_per_unit,
+                                men_per_gang,
+                                buffer_time,
+                                productivity_rate,
+                                number_of_units_to_produce,
+                                hours_per_day,
+                                days_per_week)
+    line_object.generate_curve()
+    line_object.create_table()
+    return line_object
 
-def default_diagram():
-    """Generate default diagram"""
-    lob = default_lob()
-    lob.generate_diagram()
+if __name__ == "__main__":
+    main()
