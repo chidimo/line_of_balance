@@ -51,8 +51,8 @@ def main():
                                 number_of_units_to_produce,
                                 hours_per_day,
                                 days_per_week)
-    line_object.generate_curve()
     line_object.create_table()
+    line_object.generate_curve()
     return line_object
 
 if __name__ == "__main__":
