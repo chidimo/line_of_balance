@@ -5,23 +5,23 @@ Calculations and plotting of line of balance curve as taught by Dr. Ibrahim Odeh
 
 # How to use
 
-Skip these steps if you already have python installed as well as matplotlib and numpy.
-In the event that you don't have these, follow the below three (3) steps
-1. [`Go to the python website downloads page`](https://www.python.org/downloads/)
-2. Downloading and install the appropriate python version for your system
-3. Open a command.exe window and type **pip install -r requirements.txt**
-
-You're now ready for the steps to generate the curve.
-
+## First step
 1. Download this project as a zip file from github. Here is a direct [`link`](https://github.com/Parousiaic/Line-of-Balance/archive/master.zip)
 2. Extract the contents of the zip file using either 7zip or winrar or whatever archiver of your choice.
-3. Open the included "input.txt" file
-4. Edit the entries on the right hand side of the equal sign ("=") for the given parameters. An "input.jpg" file has been included to show the format in which the program expects inputs. Please preserve the order and format of the inputs.
-5. Open command.exe and navigate to the root Line-of-balance folder; same folder where you have "main.py" file. A shortcut to do this is to hold down shift, and right click on your mouse. In the context menu you'll see "Open command window here".
-6. Type **python main.py** and click enter. A window pops up to show you what the plot looks like.
-7. Check the output folder for the generated plot in png and pdf formats and the excel table for the calculations
-8. The line of object is also returned for those who actually want to use it.
-9. Remember, this is just an experimental project. The results turned out very well for two data sets I have tried it on so far. In the event that it gives results which differ from that which you obtained by working on your own, the safest bet is that your result is the correct one.
+
+### Follow these instructions if you do not have python, numpy and matplotlib installed
+1. [`Go to the python website downloads page`](https://www.python.org/downloads/)
+2. Downloading and install the appropriate python version for your system
+3. Open command.exe and navigate to the root Line-of-balance folder; same folder where you have "main.py" file. A shortcut to do this is to navigate into the root Line-of-balance folder using windows explorer, then, hold down shift, and right click your mouse in a blank space. In the context menu you'll see "Open command window here". Click on it.
+4. In the command prompt window you just opened type **pip install -r requirements.txt**
+
+### You're now ready for the steps to generate the curve.
+1. Open the included "input.txt" file
+2. Edit the entries on the right hand side of the equal sign ("=") for the given parameters. An "input.jpg" file has been included to show the format in which the program expects inputs. Please preserve the order and format of the inputs.
+3. Type **python main.py** and click enter. A window pops up to show you what the plot looks like.
+4. Check the output folder for the generated plot in png and pdf formats and the excel table for the calculations
+5. The line of object is also returned for those who actually want to use it.
+6. Remember, this is just an experimental project. The results turned out very well for two data sets I have tried it on so far. In the event that it gives results which differ from that which you obtained by working on your own, the safest bet is that your result is the correct one.
 
 
 **License**
