@@ -13,7 +13,6 @@ Calculations and plotting of line of balance curve as taught by Dr. Ibrahim Odeh
 We will use the anaconda package to make life easier.
 1. [`Download and install anaconda from here`](https://www.continuum.io/downloads). It comes at about 400MB so you might want to use a wifi connection.
 2. Open command.exe and navigate to the root Line-of-balance folder; same folder where you have "main.py" file. A shortcut to do this is to navigate into the root Line-of-balance folder using windows explorer, then, hold down shift, and right click your mouse in a blank space. In the context menu you'll see "Open command window here". Click on it.
-3. In the command prompt window you just opened type **pip install -r requirements.txt**. This step could be skipped if you have anaconda installed.
 
 ### You're now ready for the steps to generate the curve.
 1. Open the included "input.txt" file
