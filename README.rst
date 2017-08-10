@@ -1,20 +1,24 @@
-# Line-of-Balance
+Line of Balance
+=====================
 Calculations and plotting of line of balance curve as taught by Dr. Ibrahim Odeh on coursera.
 
-[`Course page is here`](https://www.coursera.org/learn/construction-scheduling/home/welcome)
+`Course page here <https://www.coursera.org/learn/construction-scheduling/home/welcome>`_
 
-# How to use
+How to use
+================
 
-## First step
-1. Download this project as a zip file from github. Here is a direct [`link`](https://github.com/Parousiaic/Line-of-Balance/archive/master.zip)
+First step
+-------------
+1. Download this project as a zip file.
 2. Extract the contents of the zip file using either 7zip or winrar or whatever archiver of your choice.
 
-### Follow these instructions if you do not have python, numpy and matplotlib installed
+Follow these instructions if you do not have python, numpy and matplotlib installed
+
 We will use the anaconda package to make life easier.
-1. [`Download and install anaconda from here`](https://www.continuum.io/downloads). It comes at about 400MB so you might want to use a wifi connection.
+1. `Download and install anaconda from here<https://www.continuum.io/downloads>`_. It comes at about 400MB so you might want to use a wifi connection.
 2. Open command.exe and navigate to the root Line-of-balance folder; same folder where you have "main.py" file. A shortcut to do this is to navigate into the root Line-of-balance folder using windows explorer, then, hold down shift, and right click your mouse in a blank space. In the context menu you'll see "Open command window here". Click on it.
 
-### You're now ready for the steps to generate the curve.
+You're now ready for the steps to generate the curve.
 [`Watch the video of the below steps here`](https://www.youtube.com/watch?v=wNPupUVxNUo&feature=youtu.be)
 1. Open the included "input.txt" file
 2. Edit the entries on the right hand side of the equal sign ("=") for the given parameters. An "input.jpg" file has been included to show the format in which the program expects inputs. Please preserve the order and format of the inputs.
@@ -27,13 +31,15 @@ We will use the anaconda package to make life easier.
 **License**
 I don't really get the idea about licenses, but I do want this to be used freely, with acknowledgement
 
-## Course Reminders
+Course Reminders
+======================
 
 Github doesn't render mathjax by default so you won't be able to see the mathematical equations if I included them in this readme. I have instead included a "readme.html" file which you can open in your browser on your computer.
 
 You may also use view the same equations in the accompanying "readme.ipynb" jupyter notebook.
 
-### Known parameters - scalars
+Known parameters - scalars
+-----------------------------
 
 1. Number of sections to produce
 2. Buffer time
@@ -41,12 +47,15 @@ You may also use view the same equations in the accompanying "readme.ipynb" jupy
 4. Hours of work per day
 5. Days of work per week
 
-### Known parameters - sequences
+Known parameters - sequences
+------------------------------
+
 1. Activity names
 2. Manhours per unit required for each activity
 3. Number of men per gang for each activity
 
-### Parameters to be calculated
+Parameters to be calculated
+------------------------------
 
 1. Theoretical gang size required to complete each activity
 2. Actual gang size required for each activity.
