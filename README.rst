@@ -1,8 +1,8 @@
 Line of Balance
 =====================
-Calculations and plotting of line of balance curve as taught by Dr. Ibrahim Odeh on coursera.
+Calculations and plotting of line of balance curve as taught by Dr. Ibrahim Odeh on `coursera <https://www.coursera.org/>_`.
 
-`Course page here <https://www.coursera.org/learn/construction-scheduling/home/welcome>`_
+`Course page <https://www.coursera.org/learn/construction-scheduling/home/welcome>`_
 
 How to use
 ================
@@ -19,7 +19,7 @@ We will use the anaconda package to make life easier.
 2. Open command.exe and navigate to the root Line-of-balance folder; same folder where you have "main.py" file. A shortcut to do this is to navigate into the root Line-of-balance folder using windows explorer, then, hold down shift, and right click your mouse in a blank space. In the context menu you'll see "Open command window here". Click on it.
 
 You're now ready for the steps to generate the curve.
-[`Watch the video of the below steps here`](https://www.youtube.com/watch?v=wNPupUVxNUo&feature=youtu.be)
+`Watch the video of the below steps here <https://www.youtube.com/watch?v=wNPupUVxNUo&feature=youtu.be>`_
 1. Open the included "input.txt" file
 2. Edit the entries on the right hand side of the equal sign ("=") for the given parameters. An "input.jpg" file has been included to show the format in which the program expects inputs. Please preserve the order and format of the inputs.
 3. Type **python main.py** and click enter. A window pops up to show you what the plot looks like.
@@ -28,7 +28,9 @@ You're now ready for the steps to generate the curve.
 6. Remember, this is just an experimental project. The results turned out very well for two data sets I have tried it on so far. In the event that it gives results which differ from that which you obtained by working on your own, the safest bet is that your result is the correct one.
 
 
-**License**
+License
+-----------
+
 I don't really get the idea about licenses, but I do want this to be used freely, with acknowledgement
 
 Course Reminders
