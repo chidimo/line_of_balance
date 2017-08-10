@@ -1,6 +1,6 @@
 Line of Balance
 =====================
-Calculations and plotting of line of balance curve as taught by Dr. Ibrahim Odeh on `coursera <https://www.coursera.org/>_`.
+Calculations and plotting of line of balance curve as taught by Dr. Ibrahim Odeh on `coursera <https://www.coursera.org/>`_.
 
 `Course page <https://www.coursera.org/learn/construction-scheduling/home/welcome>`_
 
