@@ -16,7 +16,7 @@ Follow these instructions if you do not have python, numpy and matplotlib instal
 
 We will use the anaconda package to make life easier.
 
-`Download anaconda from here<https://www.continuum.io/downloads>`_. It comes at about 400MB so you might want to use a wifi connection.
+`Download anaconda from here<https://www.continuum.io/downloads>`_ It comes at about 400MB so you might want to use a wifi connection.
 
 Open command.exe and navigate to the root Line-of-balance folder; same folder where you have "main.py" file. A shortcut to do this is to navigate into the root Line-of-balance folder using windows explorer, then, hold down shift, and right click your mouse in a blank space. In the context menu you'll see "Open command window here". Click on it.
 
