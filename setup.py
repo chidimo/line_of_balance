@@ -21,7 +21,7 @@ setup(name='Line of Balance',
       author='Chidi Orji',
       author_email='orjichidi95@gmail.com',
       license='MIT',
-      packages=['pygit'],
+      packages=['line_of_balance'],
       install_requires=[
           'matplotlib', 'numpy', 'openpyxl'
       ],
