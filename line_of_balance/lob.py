@@ -1,15 +1,6 @@
-"""Line of Balance
+"""Line of Balance"""
 
-author: Chidi Orji
-email: orjichidi95@gmail.com
-github: https://github.com/Parousiaic
-license: BSD
-Please feel free to use and modify this, but keep the above information. Thanks!
-I bear no responsibility for anything you might break while using this script.
-"""
-
-from line_of_balance_plotter import plot_all_activities
-from line_of_balance_table import excel_table
+from .utils import excel_table, plot_all_activities
 
 # pylint: disable-msg=C0103
 
@@ -27,7 +18,6 @@ class LineOfBalance(object):
                  days_per_week,
                  ymin=0):
 
-        """Create LineOfBalance() object"""
         self.activity_names = activity_names
         self.man_hours_per_unit = man_hours_per_unit
         self.men_per_gang = men_per_gang
