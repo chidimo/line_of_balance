@@ -7,6 +7,13 @@ Calculations and plotting of line of balance curve as taught by Dr. Ibrahim Odeh
 How to use
 ================
 
+Installation
+=============
+::
+
+    pip install https://github.com/Parousiaic/line_of_balance/archive/master.zip
+
+
 First step
 -------------
 1. Download this project as a zip file.

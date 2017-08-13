@@ -2,13 +2,12 @@
 
 # pylint: disable-msg=C0103
 
-import re
 from .lob import LineOfBalance
 from .utils import get_int_list, get_names_list
 
 def plot_curve():
     """Generate curve for user input
-    
+
     Returns
     --------
     Line of Balance object

@@ -4,7 +4,7 @@ from .utils import excel_table, plot_all_activities
 
 # pylint: disable-msg=C0103
 
-class LineOfBalance(object):
+class LineOfBalance:
     """LINE OF BALANCE"""
 
     def __init__(self,

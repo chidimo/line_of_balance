@@ -2,12 +2,14 @@
 
 from setuptools import setup
 
+# pip install https://github.com/Parousiaic/line_of_balance/archive/master.zip
+
 def readme():
     """Readme"""
     with open("README.rst") as rhand:
         return rhand.read()
 
-setup(name='Line of Balance',
+setup(name='line_of_balance',
       version='1.0',
       description='Plot Line of Balance curve',
       long_description=readme(),
@@ -21,7 +23,7 @@ setup(name='Line of Balance',
       author='Chidi Orji',
       author_email='orjichidi95@gmail.com',
       license='MIT',
-      packages=['line_of_balance'],
+      packages=['lob'],
       install_requires=[
           'matplotlib', 'numpy', 'openpyxl'
       ],
