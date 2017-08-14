@@ -6,8 +6,9 @@ Calculations and plotting of line of balance curve as taught by Dr. Ibrahim Odeh
 
 `Course page <https://www.coursera.org/learn/construction-scheduling/home/welcome>`_
 
+
 Usage
-================
+----------
 
 1. Download and install `anaconda <https://www.continuum.io/downloads>`_ It comes at about 400MB so you might want to use a wifi connection.
 
@@ -19,13 +20,13 @@ Usage
     
     
 Optional Step
---------------
++++++++++++++++++
 Creating a virtual environment
 
 
 
 Generate the curve
---------------------
+++++++++++++++++++++
 
 All steps are shown in this `video <https://www.youtube.com/watch?v=wNPupUVxNUo&feature=youtu.be>`_
 
@@ -41,19 +42,19 @@ This is just an experimental project. The results turned out very well for two d
 
 
 License
------------
+------------
 
 I don't really get the idea about licenses, but I do want this to be used freely, with acknowledgement
 
 Course Reminders
-======================
+-------------------
 
 Github doesn't render mathjax by default so you won't be able to see the mathematical equations if I included them in this readme. I have instead included a "readme.html" file which you can open in your browser on your computer.
 
 You may also use view the same equations in the accompanying "readme.ipynb" jupyter notebook.
 
 Known parameters - scalars
------------------------------
++++++++++++++++++++++++++++++
 
 1. Number of sections to produce
 2. Buffer time
@@ -62,14 +63,14 @@ Known parameters - scalars
 5. Days of work per week
 
 Known parameters - sequences
-------------------------------
+++++++++++++++++++++++++++++++++
 
 1. Activity names
 2. Manhours per unit required for each activity
 3. Number of men per gang for each activity
 
 Parameters to be calculated
-------------------------------
+++++++++++++++++++++++++++++++
 
 1. Theoretical gang size required to complete each activity
 2. Actual gang size required for each activity.
