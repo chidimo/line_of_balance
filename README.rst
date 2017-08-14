@@ -4,40 +4,35 @@ Calculations and plotting of line of balance curve as taught by Dr. Ibrahim Odeh
 
 `Course page <https://www.coursera.org/learn/construction-scheduling/home/welcome>`_
 
-How to use
+Usage
 ================
 
-Installation
-=============
-::
+1. `Download and install anaconda <https://www.continuum.io/downloads>`_ It comes at about 400MB so you might want to use a wifi connection.
+
+2. After installation, go to start menu (windows), locate anaconda folder. Open anaconda prompt.
+
+3. Install with ::
 
     pip install https://github.com/Parousiaic/line_of_balance/archive/master.zip
-
-
-First step
--------------
-1. Download this project as a zip file.
-2. Extract the contents of the zip file using either 7zip or winrar or whatever archiver of your choice.
-
-Follow these instructions if you do not have python, numpy and matplotlib installed
-
-We will use the anaconda package to make life easier.
-
-`Download anaconda <https://www.continuum.io/downloads>`_ It comes at about 400MB so you might want to use a wifi connection.
-
-Open command.exe and navigate to the root Line-of-balance folder; same folder where you have "main.py" file. A shortcut to do this is to navigate into the root Line-of-balance folder using windows explorer, then, hold down shift, and right click your mouse in a blank space. In the context menu you'll see "Open command window here". Click on it.
+    
+    
+Create a virtual environment if you need to.
 
 Generate the curve
-++++++++++++++++++++++++++
+++++++++++++++++++++++++
 
-`Watch the video of the below steps here <https://www.youtube.com/watch?v=wNPupUVxNUo&feature=youtu.be>`_
+All steps are shown in this `video <https://www.youtube.com/watch?v=wNPupUVxNUo&feature=youtu.be>`_
 
 1. Open the included "input.txt" file
 2. Edit the entries on the right hand side of the equal sign ("=") for the given parameters. An "input.jpg" file has been included to show the format in which the program expects inputs. Please preserve the order and format of the inputs.
 3. Type **python main.py** and click enter. A window pops up to show you what the plot looks like.
 4. Check the output folder for the generated plot in png and pdf formats and the excel table for the calculations
 5. The line of object is also returned for those who actually want to use it.
-6. Remember, this is just an experimental project. The results turned out very well for two data sets I have tried it on so far. In the event that it gives results which differ from that which you obtained by working on your own, the safest bet is that your result is the correct one.
+
+
+Disclaimer
+-----------
+This is just an experimental project. The results turned out very well for two data sets I have tried it on so far. In the event that it gives results which differ from that which you obtained by working on your own, the safest bet is that your result is the correct one, unless you have very good reasons to doubt your work.
 
 
 License
