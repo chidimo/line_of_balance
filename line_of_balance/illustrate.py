@@ -3,7 +3,7 @@
 import matplotlib.pyplot as plt
 import matplotlib.path as mpath
 import numpy as np
-from paths import OUT_PATH
+from .paths import OUT_PATH
 
 def make_illustration(coord1, coord2, coord3, coord4, ymin, ymax):
     """Generate plot from points"""

@@ -1,0 +1,420 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>line_of_balance.lob &mdash; Line Of Balance 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="Line Of Balance 1.0 documentation" href="../../index.html"/>
+        <link rel="up" title="Module code" href="../index.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Line Of Balance
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"></div>
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Line Of Balance</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+        
+      <li>line_of_balance.lob</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for line_of_balance.lob</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Line of Balance&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">.utils</span> <span class="k">import</span> <span class="n">excel_table</span><span class="p">,</span> <span class="n">plot_all_activities</span>
+
+<span class="c1"># pylint: disable-msg=C0103</span>
+
+<div class="viewcode-block" id="LineOfBalance"><a class="viewcode-back" href="../../index.html#line_of_balance.lob.LineOfBalance">[docs]</a><span class="k">class</span> <span class="nc">LineOfBalance</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;LINE OF BALANCE</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    -----------</span>
+<span class="sd">    activity names : list</span>
+<span class="sd">    man_hours_per_gang : list</span>
+<span class="sd">    men_per_gang : list</span>
+<span class="sd">    buffer_time : int</span>
+<span class="sd">    productivity_rate : int</span>
+<span class="sd">    number_of_units_to_produce : int</span>
+<span class="sd">    hours_per_day : int</span>
+<span class="sd">    days_per_week : int</span>
+<span class="sd">    ymin : int&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                 <span class="n">activity_names</span><span class="p">,</span>
+                 <span class="n">man_hours_per_unit</span><span class="p">,</span>
+                 <span class="n">men_per_gang</span><span class="p">,</span>
+                 <span class="n">buffer_time</span><span class="p">,</span>
+                 <span class="n">productivity_rate</span><span class="p">,</span>
+                 <span class="n">number_of_units_to_produce</span><span class="p">,</span>
+                 <span class="n">hours_per_day</span><span class="p">,</span>
+                 <span class="n">days_per_week</span><span class="p">,</span>
+                 <span class="n">ymin</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">activity_names</span> <span class="o">=</span> <span class="n">activity_names</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">man_hours_per_unit</span> <span class="o">=</span> <span class="n">man_hours_per_unit</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">men_per_gang</span> <span class="o">=</span> <span class="n">men_per_gang</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">buffer_time</span> <span class="o">=</span> <span class="n">buffer_time</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">productivity_rate</span> <span class="o">=</span> <span class="n">productivity_rate</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">number_of_units_to_produce</span> <span class="o">=</span> <span class="n">number_of_units_to_produce</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hours_per_day</span> <span class="o">=</span> <span class="n">hours_per_day</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">days_per_week</span> <span class="o">=</span> <span class="n">days_per_week</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">number_of_activities</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">activity_names</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ymax</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">number_of_units_to_produce</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ymin</span> <span class="o">=</span> <span class="n">ymin</span>
+
+<div class="viewcode-block" id="LineOfBalance.theoretical_gang_size"><a class="viewcode-back" href="../../index.html#line_of_balance.lob.LineOfBalance.theoretical_gang_size">[docs]</a>    <span class="k">def</span> <span class="nf">theoretical_gang_size</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Compute theoretical gang sizes&quot;&quot;&quot;</span>
+        <span class="n">theo_g_size</span> <span class="o">=</span> <span class="p">[(</span><span class="bp">self</span><span class="o">.</span><span class="n">productivity_rate</span><span class="o">*</span><span class="n">each</span><span class="p">)</span> <span class="o">/</span>
+                       <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">hours_per_day</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">days_per_week</span><span class="p">)</span>
+                       <span class="k">for</span> <span class="n">each</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">man_hours_per_unit</span><span class="p">]</span>
+        <span class="k">return</span> <span class="p">[</span><span class="nb">round</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">theo_g_size</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="LineOfBalance.actual_gang_size"><a class="viewcode-back" href="../../index.html#line_of_balance.lob.LineOfBalance.actual_gang_size">[docs]</a>    <span class="k">def</span> <span class="nf">actual_gang_size</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Compute actual gang sizes&quot;&quot;&quot;</span>
+        <span class="n">actual_gang_size</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span> <span class="o">*</span> <span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">men_per_gang</span><span class="p">]</span>
+
+        <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">actual_gang_size</span><span class="p">):</span>
+            <span class="n">old_gang_size</span> <span class="o">=</span> <span class="n">item</span>
+
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">):</span>
+                <span class="n">new_gang_size</span> <span class="o">=</span> <span class="n">j</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">men_per_gang</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+
+                <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">old_gang_size</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">theoretical_gang_size</span><span class="p">()[</span><span class="n">idx</span><span class="p">])</span> <span class="o">&gt;=</span>\
+                <span class="nb">abs</span><span class="p">(</span><span class="n">new_gang_size</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">theoretical_gang_size</span><span class="p">()[</span><span class="n">idx</span><span class="p">]):</span>
+                    <span class="n">old_gang_size</span> <span class="o">=</span> <span class="n">new_gang_size</span>
+
+            <span class="n">actual_gang_size</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">old_gang_size</span>
+        <span class="k">return</span> <span class="nb">list</span><span class="p">([</span><span class="nb">round</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">actual_gang_size</span><span class="p">])</span></div>
+
+<div class="viewcode-block" id="LineOfBalance.actual_output_rate"><a class="viewcode-back" href="../../index.html#line_of_balance.lob.LineOfBalance.actual_output_rate">[docs]</a>    <span class="k">def</span> <span class="nf">actual_output_rate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Compute actual output rates&quot;&quot;&quot;</span>
+        <span class="n">act_out</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">productivity_rate</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span><span class="o">/</span><span class="n">y</span><span class="p">)</span>
+                   <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">actual_gang_size</span><span class="p">(),</span>
+                                   <span class="bp">self</span><span class="o">.</span><span class="n">theoretical_gang_size</span><span class="p">())]</span>
+        <span class="k">return</span> <span class="nb">list</span><span class="p">([</span><span class="nb">round</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">act_out</span><span class="p">])</span></div>
+
+<div class="viewcode-block" id="LineOfBalance.activity_duration_per_unit"><a class="viewcode-back" href="../../index.html#line_of_balance.lob.LineOfBalance.activity_duration_per_unit">[docs]</a>    <span class="k">def</span> <span class="nf">activity_duration_per_unit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Compute actual duration per unit&quot;&quot;&quot;</span>
+        <span class="n">adpu</span> <span class="o">=</span> <span class="p">[</span><span class="n">mhpu</span> <span class="o">/</span> <span class="p">(</span><span class="n">mpg</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">hours_per_day</span><span class="p">)</span>
+                <span class="k">for</span>  <span class="n">mhpu</span><span class="p">,</span> <span class="n">mpg</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">man_hours_per_unit</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">men_per_gang</span><span class="p">)]</span>
+        <span class="k">return</span> <span class="p">[</span><span class="nb">round</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">adpu</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="LineOfBalance.start_first_to_start_last"><a class="viewcode-back" href="../../index.html#line_of_balance.lob.LineOfBalance.start_first_to_start_last">[docs]</a>    <span class="k">def</span> <span class="nf">start_first_to_start_last</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Docstring&quot;&quot;&quot;</span>
+        <span class="n">sftl</span> <span class="o">=</span> <span class="p">[(</span><span class="bp">self</span><span class="o">.</span><span class="n">number_of_units_to_produce</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">days_per_week</span> <span class="o">/</span>
+                <span class="n">each</span> <span class="k">for</span> <span class="n">each</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">actual_output_rate</span><span class="p">()]</span>
+        <span class="k">return</span> <span class="p">[</span><span class="nb">round</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">sftl</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="LineOfBalance.start_end"><a class="viewcode-back" href="../../index.html#line_of_balance.lob.LineOfBalance.start_end">[docs]</a>    <span class="k">def</span> <span class="nf">start_end</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Compute four last columns concurrently. First section start and end&quot;&quot;&quot;</span>
+        <span class="n">start_first</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">end_first</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">activity_duration_per_unit</span><span class="p">()[</span><span class="mi">0</span><span class="p">]]</span>
+
+        <span class="n">start_last</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">start_first_to_start_last</span><span class="p">()[</span><span class="mi">0</span><span class="p">]]</span>
+        <span class="n">end_last</span> <span class="o">=</span> <span class="p">[</span><span class="n">start_last</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">end_first</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">number_of_activities</span><span class="p">):</span>
+
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">actual_output_rate</span><span class="p">()[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">actual_output_rate</span><span class="p">()[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
+                <span class="c1"># place buffer at bottom</span>
+                <span class="n">start_first</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">end_first</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">buffer_time</span><span class="p">)</span>
+                <span class="n">end_first</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">start_first</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">activity_duration_per_unit</span><span class="p">()[</span><span class="n">i</span><span class="p">])</span>
+
+                <span class="n">start_last</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">start_first</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span>\
+                <span class="bp">self</span><span class="o">.</span><span class="n">start_first_to_start_last</span><span class="p">()[</span><span class="n">i</span><span class="p">])</span>
+                <span class="n">end_last</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">start_last</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">activity_duration_per_unit</span><span class="p">()[</span><span class="n">i</span><span class="p">])</span>
+
+            <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">actual_output_rate</span><span class="p">()[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">actual_output_rate</span><span class="p">()[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
+                <span class="c1"># place buffer at bottom</span>
+                <span class="n">start_last</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">end_last</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">buffer_time</span><span class="p">)</span>
+                <span class="n">end_last</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">start_last</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">activity_duration_per_unit</span><span class="p">()[</span><span class="n">i</span><span class="p">])</span>
+
+                <span class="n">start_first</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">start_last</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> \
+                <span class="bp">self</span><span class="o">.</span><span class="n">start_first_to_start_last</span><span class="p">()[</span><span class="n">i</span><span class="p">])</span>
+                <span class="n">end_first</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">start_first</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">activity_duration_per_unit</span><span class="p">()[</span><span class="n">i</span><span class="p">])</span>
+
+        <span class="k">return</span> <span class="p">[</span><span class="nb">round</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">start_first</span><span class="p">],</span> <span class="p">[</span><span class="nb">round</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">end_first</span><span class="p">],</span>\
+        <span class="p">[</span><span class="nb">round</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">start_last</span><span class="p">],</span> <span class="p">[</span><span class="nb">round</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">end_last</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="LineOfBalance.start_on_first_section"><a class="viewcode-back" href="../../index.html#line_of_balance.lob.LineOfBalance.start_on_first_section">[docs]</a>    <span class="k">def</span> <span class="nf">start_on_first_section</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Start on first section for activity&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_end</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="LineOfBalance.end_on_first_section"><a class="viewcode-back" href="../../index.html#line_of_balance.lob.LineOfBalance.end_on_first_section">[docs]</a>    <span class="k">def</span> <span class="nf">end_on_first_section</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;End on first section for activity&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_end</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="LineOfBalance.start_on_last_section"><a class="viewcode-back" href="../../index.html#line_of_balance.lob.LineOfBalance.start_on_last_section">[docs]</a>    <span class="k">def</span> <span class="nf">start_on_last_section</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Start on last section for activity&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_end</span><span class="p">()[</span><span class="mi">2</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="LineOfBalance.end_on_last_section"><a class="viewcode-back" href="../../index.html#line_of_balance.lob.LineOfBalance.end_on_last_section">[docs]</a>    <span class="k">def</span> <span class="nf">end_on_last_section</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;End on last section for activity&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_end</span><span class="p">()[</span><span class="mi">3</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="LineOfBalance.arrange_values"><a class="viewcode-back" href="../../index.html#line_of_balance.lob.LineOfBalance.arrange_values">[docs]</a>    <span class="k">def</span> <span class="nf">arrange_values</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Arrange the values in tabular format&quot;&quot;&quot;</span>
+
+        <span class="n">values</span> <span class="o">=</span> <span class="p">[[</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">e</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">l</span><span class="p">]</span>
+                  <span class="k">for</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">e</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">l</span> <span class="ow">in</span>
+                  <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">activity_names</span><span class="p">,</span>
+                      <span class="bp">self</span><span class="o">.</span><span class="n">man_hours_per_unit</span><span class="p">,</span>
+                      <span class="bp">self</span><span class="o">.</span><span class="n">men_per_gang</span><span class="p">,</span>
+                      <span class="bp">self</span><span class="o">.</span><span class="n">theoretical_gang_size</span><span class="p">(),</span>
+                      <span class="bp">self</span><span class="o">.</span><span class="n">actual_gang_size</span><span class="p">(),</span>
+                      <span class="bp">self</span><span class="o">.</span><span class="n">actual_output_rate</span><span class="p">(),</span>
+                      <span class="bp">self</span><span class="o">.</span><span class="n">activity_duration_per_unit</span><span class="p">(),</span>
+                      <span class="bp">self</span><span class="o">.</span><span class="n">start_first_to_start_last</span><span class="p">(),</span>
+                      <span class="bp">self</span><span class="o">.</span><span class="n">start_on_first_section</span><span class="p">(),</span>
+                      <span class="bp">self</span><span class="o">.</span><span class="n">end_on_first_section</span><span class="p">(),</span>
+                      <span class="bp">self</span><span class="o">.</span><span class="n">start_on_last_section</span><span class="p">(),</span>
+                      <span class="bp">self</span><span class="o">.</span><span class="n">end_on_last_section</span><span class="p">())]</span>
+        <span class="k">return</span> <span class="n">values</span></div>
+
+<div class="viewcode-block" id="LineOfBalance.column_headings"><a class="viewcode-back" href="../../index.html#line_of_balance.lob.LineOfBalance.column_headings">[docs]</a>    <span class="k">def</span> <span class="nf">column_headings</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="c1"># add **kwargs to take additional columns</span>
+        <span class="sd">&quot;&quot;&quot;Column headings&quot;&quot;&quot;</span>
+        <span class="n">columns</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;Activity&quot;</span><span class="p">,</span>
+                   <span class="s2">&quot;Man hours per unit&quot;</span><span class="p">,</span>
+                   <span class="s2">&quot;Men per gang&quot;</span><span class="p">,</span>
+                   <span class="s2">&quot;Theoretical gang size&quot;</span><span class="p">,</span>
+                   <span class="s2">&quot;Actual gang size&quot;</span><span class="p">,</span>
+                   <span class="s2">&quot;Actual output rate&quot;</span><span class="p">,</span>
+                   <span class="s2">&quot;Activity duration per unit&quot;</span><span class="p">,</span>
+                   <span class="s2">&quot;Start on first section to start on last section&quot;</span><span class="p">,</span>
+                   <span class="s2">&quot;Start on first section&quot;</span><span class="p">,</span>
+                   <span class="s2">&quot;End on first section&quot;</span><span class="p">,</span>
+                   <span class="s2">&quot;Start on last section&quot;</span><span class="p">,</span>
+                   <span class="s2">&quot;End on last section&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">columns</span></div>
+
+<div class="viewcode-block" id="LineOfBalance.generate_plot_points"><a class="viewcode-back" href="../../index.html#line_of_balance.lob.LineOfBalance.generate_plot_points">[docs]</a>    <span class="k">def</span> <span class="nf">generate_plot_points</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Generate plot points&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">[(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span> <span class="k">for</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">e</span> <span class="ow">in</span>
+                <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">activity_names</span><span class="p">,</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">start_on_first_section</span><span class="p">(),</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">end_on_first_section</span><span class="p">(),</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">start_on_last_section</span><span class="p">(),</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">end_on_last_section</span><span class="p">())]</span></div>
+
+<div class="viewcode-block" id="LineOfBalance.generate_curve"><a class="viewcode-back" href="../../index.html#line_of_balance.lob.LineOfBalance.generate_curve">[docs]</a>    <span class="k">def</span> <span class="nf">generate_curve</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Generate the line of balance curve&quot;&quot;&quot;</span>
+        <span class="n">points_to_plot</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">generate_plot_points</span><span class="p">()</span>
+        <span class="n">plot_all_activities</span><span class="p">(</span><span class="n">points_to_plot</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ymin</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ymax</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="LineOfBalance.project_duration"><a class="viewcode-back" href="../../index.html#line_of_balance.lob.LineOfBalance.project_duration">[docs]</a>    <span class="k">def</span> <span class="nf">project_duration</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Total project duration&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">generate_plot_points</span><span class="p">()[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">4</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span></div>
+
+<div class="viewcode-block" id="LineOfBalance.create_table"><a class="viewcode-back" href="../../index.html#line_of_balance.lob.LineOfBalance.create_table">[docs]</a>    <span class="k">def</span> <span class="nf">create_table</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create table from object&quot;&quot;&quot;</span>
+        <span class="n">heads</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">column_headings</span><span class="p">()</span>
+        <span class="n">vals</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">arrange_values</span><span class="p">()</span>
+        <span class="n">excel_table</span><span class="p">(</span><span class="n">heads</span><span class="p">,</span> <span class="n">vals</span><span class="p">)</span></div></div>
+
+<div class="viewcode-block" id="main"><a class="viewcode-back" href="../../index.html#line_of_balance.lob.main">[docs]</a><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Main&quot;&quot;&quot;</span>
+    <span class="k">return</span></div>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Chidi Orji (orjichidi95@gmail.com).
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

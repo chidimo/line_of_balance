@@ -4,6 +4,30 @@
 
 from .lob import LineOfBalance
 from .utils import get_int_list, get_names_list
+from .paths import INPUT_PATH
+
+def default_lob():
+    """Plot curve with default arguments"""
+    activity_names = ['A', 'B', 'C', 'D', 'E']
+    man_hours_per_unit = [100, 350, 60, 200, 150]
+    men_per_gang = [4, 6, 2, 5, 8]
+    buffer_time = 5
+    productivity_rate = 3
+    number_of_units_to_produce = 20
+    hours_per_day = 8
+    days_per_week = 5
+
+    line_object = LineOfBalance(activity_names,
+                                man_hours_per_unit,
+                                men_per_gang,
+                                buffer_time,
+                                productivity_rate,
+                                number_of_units_to_produce,
+                                hours_per_day,
+                                days_per_week)
+    line_object.generate_curve()
+    line_object.create_table()
+    return line_object
 
 def plot_curve():
     """Generate curve for user input
@@ -12,7 +36,7 @@ def plot_curve():
     --------
     Line of Balance object
     """
-    with open("input.txt", "r") as input_handle:
+    with open(INPUT_PATH, "r+") as input_handle:
         input_values = input_handle.readlines()
 
     activity_names = input_values[0].split('=')[1].strip()

@@ -5,7 +5,19 @@ from .utils import excel_table, plot_all_activities
 # pylint: disable-msg=C0103
 
 class LineOfBalance:
-    """LINE OF BALANCE"""
+    """LINE OF BALANCE
+
+    Parameters
+    -----------
+    activity names : list
+    man_hours_per_gang : list
+    men_per_gang : list
+    buffer_time : int
+    productivity_rate : int
+    number_of_units_to_produce : int
+    hours_per_day : int
+    days_per_week : int
+    ymin : int"""
 
     def __init__(self,
                  activity_names,
@@ -180,27 +192,8 @@ class LineOfBalance:
         excel_table(heads, vals)
 
 def main():
-    """Main with default arguments"""
-    activity_names = ['A', 'B', 'C', 'D', 'E']
-    man_hours_per_unit = [100, 350, 60, 200, 150]
-    men_per_gang = [4, 6, 2, 5, 8]
-    buffer_time = 5
-    productivity_rate = 3
-    number_of_units_to_produce = 20
-    hours_per_day = 8
-    days_per_week = 5
-
-    line_object = LineOfBalance(activity_names,
-                                man_hours_per_unit,
-                                men_per_gang,
-                                buffer_time,
-                                productivity_rate,
-                                number_of_units_to_produce,
-                                hours_per_day,
-                                days_per_week)
-    line_object.generate_curve()
-    line_object.create_table()
-    return line_object
+    """Main"""
+    return
 
 if __name__ == "__main__":
     main()
