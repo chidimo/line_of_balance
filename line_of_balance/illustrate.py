@@ -3,9 +3,9 @@
 import matplotlib.pyplot as plt
 import matplotlib.path as mpath
 import numpy as np
-from .paths import OUT_PATH
+from .utils import open_save
 
-def make_illustration(coord1, coord2, coord3, coord4, ymin, ymax):
+def make_illus(coord1, coord2, coord3, coord4, ymin, ymax):
     """Generate plot from points"""
 
     fig = plt.figure(figsize=(10, 8), facecolor='lightblue', edgecolor='g')
@@ -55,10 +55,14 @@ def make_illustration(coord1, coord2, coord3, coord4, ymin, ymax):
     axes.spines['right'].set_visible(False)
     axes.spines['top'].set_visible(False)
 
-    plt.savefig(OUT_PATH + "/illustrator.pdf", facecolor=fig.get_facecolor(), dpi=100)
-    plt.savefig(OUT_PATH + "/illustrator.png", facecolor=fig.get_facecolor(), dpi=100)
+    name = open_save()
 
+    plt.savefig(name + ".pdf", facecolor=fig.get_facecolor(), dpi=100)
+    plt.savefig(name + ".png", facecolor=fig.get_facecolor(), dpi=100)
     plt.show()
 
+def illustrate():
+    make_illus(5, 15, 35, 45, 0, 20)
+    
 if __name__ == "__main__":
-    make_illustration(5, 15, 35, 45, 0, 20)
+    make_illus(5, 15, 35, 45, 0, 20)

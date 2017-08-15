@@ -1,10 +1,14 @@
 """paths"""
 
-import os
+import tkinter as tk
+from tkinter import filedialog as fd
 
-BASE_PATH = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-os.chdir(BASE_PATH)
-os.chdir("output")
-OUT_PATH = os.getcwd()
+root = tk.Tk()
+root.withdraw()
+NAME = fd.asksaveasfilename()
+PDF = NAME + ".pdf"
+PNG = NAME + ".png"
 
-INPUT_PATH = os.path.abspath(os.path.join(BASE_PATH, "input.txt"))
+EXCEL_PATH = fd.asksaveasfilename() + ".xlsx"
+
+INPUT_PATH = fd.askopenfilename()

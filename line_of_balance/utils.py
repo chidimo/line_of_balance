@@ -5,10 +5,21 @@ import matplotlib.pyplot as plt
 import matplotlib.path as mpath
 import numpy as np
 import openpyxl as OP
-from .paths import OUT_PATH
+import tkinter as tk
+from tkinter import filedialog as fd
 
 # pylint: disable-msg=C0103
 # pylint: disable-msg=E1101
+
+def open_save(mode="save"):
+    """Return path to open or save file"""
+    root = tk.Tk()
+    root.withdraw()
+
+    if mode == "open":
+        return fd.askopenfilename()
+    elif mode == "save":
+        return fd.asksaveasfilename()
 
 def get_int_list(string_list):
     """Get a list of integers representing various list values"""
@@ -41,7 +52,7 @@ def excel_table(headings, cell_values):
         for idx, item in enumerate(each):
             sheet.cell(row=i, column=idx+1, value=item)
         i += 1
-    book.save('output/line_of_balance.xlsx')
+    book.save(fd.asksaveasfilename() + ".xlsx")
 
 def pyplot_table(headings, cell_values):
     """Draw the line of balance table"""
@@ -157,10 +168,12 @@ def plot_all_activities(set_of_points, ymin, ymax):
     plt.xlabel("Project duration")
 
     plt.tight_layout()
-
-    plt.savefig(OUT_PATH + ".pdf", facecolor=fig.get_facecolor(), dpi=100)
-    plt.savefig(OUT_PATH + ".png", facecolor=fig.get_facecolor(), dpi=100)
     # plt.legend()
+
+    name = open_save()
+
+    plt.savefig(name + ".pdf", facecolor=fig.get_facecolor(), dpi=100)
+    plt.savefig(name + ".png", facecolor=fig.get_facecolor(), dpi=100)
     plt.show()
 
 def main():

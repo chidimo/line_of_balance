@@ -3,8 +3,7 @@
 # pylint: disable-msg=C0103
 
 from .lob import LineOfBalance
-from .utils import get_int_list, get_names_list
-from .paths import INPUT_PATH
+from .utils import open_save, get_int_list, get_names_list
 
 def default_lob():
     """Plot curve with default arguments"""
@@ -36,7 +35,8 @@ def plot_curve():
     --------
     Line of Balance object
     """
-    with open(INPUT_PATH, "r+") as input_handle:
+
+    with open(open_save(mode="open"), "r+") as input_handle:
         input_values = input_handle.readlines()
 
     activity_names = input_values[0].split('=')[1].strip()
@@ -67,4 +67,4 @@ def plot_curve():
     return line_object
 
 if __name__ == "__main__":
-    plot_curve()
+    default_lob()
