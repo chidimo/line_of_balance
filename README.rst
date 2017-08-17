@@ -28,7 +28,7 @@ Creating a virtual environment
 Generate the curve
 ++++++++++++++++++++
 
-All steps are shown in this `video <https://www.youtube.com/watch?v=wNPupUVxNUo&feature=youtu.be>`_
+All steps are shown in this ...
 
 1. Open the included "input.txt" file
 
