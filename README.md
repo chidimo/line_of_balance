@@ -89,3 +89,6 @@ class LineOfBalance:
 
 This is just an experimental project. The results turned out very well for two data sets I have tried it on so far. Example output is included.
 In the event that it gives results which differ from that which you obtained by working on your own, the safest bet is that your result is the correct one, unless you have very good reasons to doubt your work.
+
+
+#### pdf generated with Markdown pdf by yzane
