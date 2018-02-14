@@ -10,7 +10,7 @@ def readme():
         return rhand.read()
 
 setup(name='line_of_balance',
-      version='1.0',
+      version='2.0',
       description='Plot Line of Balance curve',
       long_description=readme(),
       classifiers=[
@@ -23,7 +23,7 @@ setup(name='line_of_balance',
       author='Chidi Orji',
       author_email='orjichidi95@gmail.com',
       license='MIT',
-      packages=['line_of_balance'],
+      packages=['lineob'],
       install_requires=[
           'matplotlib', 'numpy', 'openpyxl'
       ],

@@ -1,12 +1,10 @@
-Course Reminders
--------------------
+# Course Reminders
 
 Github doesn't render mathjax by default so you won't be able to see the mathematical equations if I included them in this readme. I have instead included a "readme.html" file which you can open in your browser on your computer.
 
 You may also use view the same equations in the accompanying "readme.ipynb" jupyter notebook.
 
-Known parameters - scalars
-+++++++++++++++++++++++++++++
+## Known parameters - scalars
 
 1. Number of sections to produce
 2. Buffer time
@@ -14,15 +12,13 @@ Known parameters - scalars
 4. Hours of work per day
 5. Days of work per week
 
-Known parameters - sequences
-++++++++++++++++++++++++++++++++
+## Known parameters - sequences
 
 1. Activity names
 2. Manhours per unit required for each activity
 3. Number of men per gang for each activity
 
-Parameters to be calculated
-++++++++++++++++++++++++++++++
+## Parameters to be calculated
 
 1. Theoretical gang size required to complete each activity
 2. Actual gang size required for each activity.
