@@ -227,7 +227,7 @@ def plot_all_activities(set_of_points, ymin, ymax):
 
     plt.savefig(name + ".pdf", facecolor=fig.get_facecolor(), dpi=100)
     plt.savefig(name + ".png", facecolor=fig.get_facecolor(), dpi=100)
-    plt.show(block=False)
+    # plt.show(block=False)
 
 def illustrate_lob(coord1, coord2, coord3, coord4, ymin, ymax):
     """Generate illustrative plots from set of user-entered points"""
