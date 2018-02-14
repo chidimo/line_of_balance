@@ -1,0 +1,8 @@
+activity_names = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']
+man_hours_per_unit = [110, 320, 365, 35, 210, 250, 200, 300]
+men_per_gang = [3, 8, 9, 2, 5, 8, 7, 6]
+buffer_time = 5
+productivity_rate = 3
+number_of_units_to_produce = 20
+hours_per_day = 8
+days_per_week = 5

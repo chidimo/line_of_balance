@@ -98,7 +98,7 @@
 </li>
 <li><a class="reference internal" href="#disclaimer">Disclaimer</a></li>
 <li><a class="reference internal" href="#license">License</a></li>
-<li><a class="reference internal" href="#module-line_of_balance.api">Code</a></li>
+<li><a class="reference internal" href="#code">Code</a></li>
 <li><a class="reference internal" href="#course-reminders">Course Reminders</a><ul>
 <li><a class="reference internal" href="#known-parameters-scalars">Known parameters - scalars</a></li>
 <li><a class="reference internal" href="#known-parameters-sequences">Known parameters - sequences</a></li>
@@ -183,7 +183,7 @@
 <li><p class="first">After installation, go to start menu (windows), locate anaconda folder. Open anaconda prompt.</p>
 </li>
 <li><p class="first">Install with</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">Parousiaic</span><span class="o">/</span><span class="n">line_of_balance</span><span class="o">/</span><span class="n">archive</span><span class="o">/</span><span class="n">master</span><span class="o">.</span><span class="n">zip</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">Parousiaic</span><span class="o">/</span><span class="n">line_of_balance</span><span class="o">/</span><span class="n">archive</span><span class="o">/</span><span class="n">master</span><span class="o">.</span><span class="n">zip</span>
 </pre></div>
 </div>
 </li>
@@ -194,7 +194,7 @@
 </div>
 <div class="section" id="generate-the-curve">
 <h3>Generate the curve<a class="headerlink" href="#generate-the-curve" title="Permalink to this headline">¶</a></h3>
-<p>All steps are shown in this <a class="reference external" href="https://www.youtube.com/watch?v=wNPupUVxNUo&amp;feature=youtu.be">video</a></p>
+<p>All steps are shown in this …</p>
 <ol class="arabic simple">
 <li>Open the included “input.txt” file</li>
 <li>Edit the entries on the right hand side of the equal sign (“=”) for the given parameters. An “input.jpg” file has been included to show the format in which the program expects inputs. Please preserve the order and format of the inputs.</li>
@@ -209,204 +209,8 @@
 <h2>License<a class="headerlink" href="#license" title="Permalink to this headline">¶</a></h2>
 <p>I don’t really get the idea about licenses, but I do want this to be used freely, with acknowledgement</p>
 </div>
-<div class="section" id="module-line_of_balance.api">
-<span id="code"></span><h2>Code<a class="headerlink" href="#module-line_of_balance.api" title="Permalink to this headline">¶</a></h2>
-<p>API</p>
-<dl class="function">
-<dt id="line_of_balance.api.default_lob">
-<code class="descclassname">line_of_balance.api.</code><code class="descname">default_lob</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/line_of_balance/api.html#default_lob"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#line_of_balance.api.default_lob" title="Permalink to this definition">¶</a></dt>
-<dd><p>Plot curve with default arguments</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="line_of_balance.api.plot_curve">
-<code class="descclassname">line_of_balance.api.</code><code class="descname">plot_curve</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/line_of_balance/api.html#plot_curve"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#line_of_balance.api.plot_curve" title="Permalink to this definition">¶</a></dt>
-<dd><p>Generate curve for user input</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"></td>
-</tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">Line of Balance object</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<span class="target" id="module-line_of_balance.illustrate"></span><p>Line of Balance illustrator</p>
-<span class="target" id="module-line_of_balance.lob"></span><p>Line of Balance</p>
-<dl class="class">
-<dt id="line_of_balance.lob.LineOfBalance">
-<em class="property">class </em><code class="descclassname">line_of_balance.lob.</code><code class="descname">LineOfBalance</code><span class="sig-paren">(</span><em>activity_names</em>, <em>man_hours_per_unit</em>, <em>men_per_gang</em>, <em>buffer_time</em>, <em>productivity_rate</em>, <em>number_of_units_to_produce</em>, <em>hours_per_day</em>, <em>days_per_week</em>, <em>ymin=0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/line_of_balance/lob.html#LineOfBalance"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#line_of_balance.lob.LineOfBalance" title="Permalink to this definition">¶</a></dt>
-<dd><p>LINE OF BALANCE</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>names</strong> (<em>activity</em>) – </li>
-<li><strong>man_hours_per_gang</strong> (<em>list</em>) – </li>
-<li><strong>men_per_gang</strong> (<em>list</em>) – </li>
-<li><strong>buffer_time</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) – </li>
-<li><strong>productivity_rate</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) – </li>
-<li><strong>number_of_units_to_produce</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) – </li>
-<li><strong>hours_per_day</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) – </li>
-<li><strong>days_per_week</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) – </li>
-<li><strong>ymin</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) – </li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-<p class="rubric">Methods</p>
-<dl class="method">
-<dt id="line_of_balance.lob.LineOfBalance.activity_duration_per_unit">
-<code class="descname">activity_duration_per_unit</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/line_of_balance/lob.html#LineOfBalance.activity_duration_per_unit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#line_of_balance.lob.LineOfBalance.activity_duration_per_unit" title="Permalink to this definition">¶</a></dt>
-<dd><p>Compute actual duration per unit</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="line_of_balance.lob.LineOfBalance.actual_gang_size">
-<code class="descname">actual_gang_size</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/line_of_balance/lob.html#LineOfBalance.actual_gang_size"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#line_of_balance.lob.LineOfBalance.actual_gang_size" title="Permalink to this definition">¶</a></dt>
-<dd><p>Compute actual gang sizes</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="line_of_balance.lob.LineOfBalance.actual_output_rate">
-<code class="descname">actual_output_rate</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/line_of_balance/lob.html#LineOfBalance.actual_output_rate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#line_of_balance.lob.LineOfBalance.actual_output_rate" title="Permalink to this definition">¶</a></dt>
-<dd><p>Compute actual output rates</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="line_of_balance.lob.LineOfBalance.arrange_values">
-<code class="descname">arrange_values</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/line_of_balance/lob.html#LineOfBalance.arrange_values"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#line_of_balance.lob.LineOfBalance.arrange_values" title="Permalink to this definition">¶</a></dt>
-<dd><p>Arrange the values in tabular format</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="line_of_balance.lob.LineOfBalance.column_headings">
-<code class="descname">column_headings</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/line_of_balance/lob.html#LineOfBalance.column_headings"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#line_of_balance.lob.LineOfBalance.column_headings" title="Permalink to this definition">¶</a></dt>
-<dd><p>Column headings</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="line_of_balance.lob.LineOfBalance.create_table">
-<code class="descname">create_table</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/line_of_balance/lob.html#LineOfBalance.create_table"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#line_of_balance.lob.LineOfBalance.create_table" title="Permalink to this definition">¶</a></dt>
-<dd><p>Create table from object</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="line_of_balance.lob.LineOfBalance.end_on_first_section">
-<code class="descname">end_on_first_section</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/line_of_balance/lob.html#LineOfBalance.end_on_first_section"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#line_of_balance.lob.LineOfBalance.end_on_first_section" title="Permalink to this definition">¶</a></dt>
-<dd><p>End on first section for activity</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="line_of_balance.lob.LineOfBalance.end_on_last_section">
-<code class="descname">end_on_last_section</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/line_of_balance/lob.html#LineOfBalance.end_on_last_section"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#line_of_balance.lob.LineOfBalance.end_on_last_section" title="Permalink to this definition">¶</a></dt>
-<dd><p>End on last section for activity</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="line_of_balance.lob.LineOfBalance.generate_curve">
-<code class="descname">generate_curve</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/line_of_balance/lob.html#LineOfBalance.generate_curve"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#line_of_balance.lob.LineOfBalance.generate_curve" title="Permalink to this definition">¶</a></dt>
-<dd><p>Generate the line of balance curve</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="line_of_balance.lob.LineOfBalance.generate_plot_points">
-<code class="descname">generate_plot_points</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/line_of_balance/lob.html#LineOfBalance.generate_plot_points"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#line_of_balance.lob.LineOfBalance.generate_plot_points" title="Permalink to this definition">¶</a></dt>
-<dd><p>Generate plot points</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="line_of_balance.lob.LineOfBalance.project_duration">
-<code class="descname">project_duration</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/line_of_balance/lob.html#LineOfBalance.project_duration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#line_of_balance.lob.LineOfBalance.project_duration" title="Permalink to this definition">¶</a></dt>
-<dd><p>Total project duration</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="line_of_balance.lob.LineOfBalance.start_end">
-<code class="descname">start_end</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/line_of_balance/lob.html#LineOfBalance.start_end"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#line_of_balance.lob.LineOfBalance.start_end" title="Permalink to this definition">¶</a></dt>
-<dd><p>Compute four last columns concurrently. First section start and end</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="line_of_balance.lob.LineOfBalance.start_first_to_start_last">
-<code class="descname">start_first_to_start_last</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/line_of_balance/lob.html#LineOfBalance.start_first_to_start_last"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#line_of_balance.lob.LineOfBalance.start_first_to_start_last" title="Permalink to this definition">¶</a></dt>
-<dd><p>Docstring</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="line_of_balance.lob.LineOfBalance.start_on_first_section">
-<code class="descname">start_on_first_section</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/line_of_balance/lob.html#LineOfBalance.start_on_first_section"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#line_of_balance.lob.LineOfBalance.start_on_first_section" title="Permalink to this definition">¶</a></dt>
-<dd><p>Start on first section for activity</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="line_of_balance.lob.LineOfBalance.start_on_last_section">
-<code class="descname">start_on_last_section</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/line_of_balance/lob.html#LineOfBalance.start_on_last_section"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#line_of_balance.lob.LineOfBalance.start_on_last_section" title="Permalink to this definition">¶</a></dt>
-<dd><p>Start on last section for activity</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="line_of_balance.lob.LineOfBalance.theoretical_gang_size">
-<code class="descname">theoretical_gang_size</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/line_of_balance/lob.html#LineOfBalance.theoretical_gang_size"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#line_of_balance.lob.LineOfBalance.theoretical_gang_size" title="Permalink to this definition">¶</a></dt>
-<dd><p>Compute theoretical gang sizes</p>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="function">
-<dt id="line_of_balance.lob.main">
-<code class="descclassname">line_of_balance.lob.</code><code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/line_of_balance/lob.html#main"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#line_of_balance.lob.main" title="Permalink to this definition">¶</a></dt>
-<dd><p>Main</p>
-</dd></dl>
-
-<span class="target" id="module-line_of_balance.utils"></span><p>Line of Balance curve plotter</p>
-<dl class="function">
-<dt id="line_of_balance.utils.excel_table">
-<code class="descclassname">line_of_balance.utils.</code><code class="descname">excel_table</code><span class="sig-paren">(</span><em>headings</em>, <em>cell_values</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/line_of_balance/utils.html#excel_table"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#line_of_balance.utils.excel_table" title="Permalink to this definition">¶</a></dt>
-<dd><p>Table as excel file</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="line_of_balance.utils.get_int_list">
-<code class="descclassname">line_of_balance.utils.</code><code class="descname">get_int_list</code><span class="sig-paren">(</span><em>string_list</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/line_of_balance/utils.html#get_int_list"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#line_of_balance.utils.get_int_list" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get a list of integers representing various list values</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="line_of_balance.utils.get_names_list">
-<code class="descclassname">line_of_balance.utils.</code><code class="descname">get_names_list</code><span class="sig-paren">(</span><em>string_list</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/line_of_balance/utils.html#get_names_list"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#line_of_balance.utils.get_names_list" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get list of activity names</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="line_of_balance.utils.main">
-<code class="descclassname">line_of_balance.utils.</code><code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/line_of_balance/utils.html#main"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#line_of_balance.utils.main" title="Permalink to this definition">¶</a></dt>
-<dd><p>Docstring</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="line_of_balance.utils.plot_all_activities">
-<code class="descclassname">line_of_balance.utils.</code><code class="descname">plot_all_activities</code><span class="sig-paren">(</span><em>set_of_points</em>, <em>ymin</em>, <em>ymax</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/line_of_balance/utils.html#plot_all_activities"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#line_of_balance.utils.plot_all_activities" title="Permalink to this definition">¶</a></dt>
-<dd><p>Generate plot from points</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="line_of_balance.utils.plot_single_activity">
-<code class="descclassname">line_of_balance.utils.</code><code class="descname">plot_single_activity</code><span class="sig-paren">(</span><em>coord1</em>, <em>coord2</em>, <em>coord3</em>, <em>coord4</em>, <em>ymin</em>, <em>ymax</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/line_of_balance/utils.html#plot_single_activity"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#line_of_balance.utils.plot_single_activity" title="Permalink to this definition">¶</a></dt>
-<dd><p>Generate plot from points</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="line_of_balance.utils.pyplot_table">
-<code class="descclassname">line_of_balance.utils.</code><code class="descname">pyplot_table</code><span class="sig-paren">(</span><em>headings</em>, <em>cell_values</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/line_of_balance/utils.html#pyplot_table"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#line_of_balance.utils.pyplot_table" title="Permalink to this definition">¶</a></dt>
-<dd><p>Draw the line of balance table</p>
-</dd></dl>
-
+<div class="section" id="code">
+<h2>Code<a class="headerlink" href="#code" title="Permalink to this headline">¶</a></h2>
 <div class="toctree-wrapper compound">
 </div>
 </div>

@@ -517,5 +517,4 @@ def plot_lob_curve():
     return line_object
 
 if __name__ == "__main__":
-    print("Working")
-    illustrate_lob(5, 15, 35, 45, 0, 20)
+    pass
