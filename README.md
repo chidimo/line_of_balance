@@ -29,23 +29,23 @@ Creating a virtual environment
 1. Edit the entries on the right hand side of the equal sign ("=") for the given parameters. An "input.jpg" file has been included to show the format in which the program expects inputs. Please preserve the order and format of the inputs.
 
 ### Using the functions
-    import lineob
+    import line_of_balance
 
 ### To see an illustration of the concept of line of balance call the illustrate function
-    lineob.illustrate()
+    line_of_balance.illustrate()
 
 ### In case you have a list of points to use for the illustration, call it like this
-    lineob.illustrate_lob(list_of_points)
+    line_of_balance.illustrate_lob(list_of_points)
 
 ### To plot a curve using default dataset provided with this package
-    lineob.default_lob()
+    line_of_balance.default_lob()
 
 ### To plot a curve using your own dataset. Be sure that your data is in the format show in the example dataset. You can choose the input file via a file dialog which is fired up if `tkinter` is available on your system. Otherwise it will ask you to manually supply the path to your input file.
-    lineob.plot_lob_curve()
+    line_of_balance.plot_lob_curve()
 
-This function returns a `lineob.lineob.LineOfBalance` object which you can manipulate. The plot is not show, rather you can see a pdf and a png output in the same directory from where you run the program. But if you have `tkinter` you can specify a directory to save the output.
+This function returns a `line_of_balance.line_of_balance.LineOfBalance` object which you can manipulate. The plot is not show, rather you can see a pdf and a png output in the same directory from where you run the program. But if you have `tkinter` you can specify a directory to save the output.
 
-The `lineob.lineob.LineOfBalance` can be initialized as shown below
+The `line_of_balance.line_of_balance.LineOfBalance` can be initialized as shown below
 
 ```python
 class LineOfBalance:

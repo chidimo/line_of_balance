@@ -23,7 +23,7 @@ setup(name='line_of_balance',
       author='Chidi Orji',
       author_email='orjichidi95@gmail.com',
       license='MIT',
-      packages=['lineob'],
+      packages=['line_of_balance'],
       install_requires=[
           'matplotlib', 'numpy', 'openpyxl'
       ],
