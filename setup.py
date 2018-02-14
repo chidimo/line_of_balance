@@ -6,7 +6,7 @@ from setuptools import setup
 
 def readme():
     """Readme"""
-    with open("README.rst") as rhand:
+    with open("README.md") as rhand:
         return rhand.read()
 
 setup(name='line_of_balance',
