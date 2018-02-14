@@ -230,7 +230,7 @@ def plot_all_activities(set_of_points, ymin, ymax):
     plt.show(block=False)
 
 def illustrate_lob(coord1, coord2, coord3, coord4, ymin, ymax):
-    """Generate plot from points"""
+    """Generate illustrative plots from set of user-entered points"""
 
     fig = plt.figure(figsize=(10, 8), facecolor='lightblue', edgecolor='g')
 
@@ -288,6 +288,10 @@ def illustrate_lob(coord1, coord2, coord3, coord4, ymin, ymax):
     plt.savefig(name + ".pdf", facecolor=fig.get_facecolor(), dpi=100)
     plt.savefig(name + ".png", facecolor=fig.get_facecolor(), dpi=100)
     plt.show()
+
+def illustrate():
+    """Illustrate with default values"""
+    illustrate_lob(5, 15, 35, 45, 0, 20)
 
 def default_lob():
     """Plot curve with default values for 5 activities"""
