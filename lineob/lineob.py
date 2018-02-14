@@ -56,26 +56,25 @@ def parse_data():
         else:
             input_file_name = open(prompt, 'r+')
 
-        input_file_name = input_file_name.readlines()
+            input_file_name = input_file_name.readlines()
 
-        activity_names = input_file_name[0].split('=')[1].strip()
-        man_hours_per_unit = input_file_name[1].split('=')[1].strip()
-        men_per_gang = input_file_name[2].split('=')[1].strip()
+    activity_names = input_file_name[0].split('=')[1].strip()
+    man_hours_per_unit = input_file_name[1].split('=')[1].strip()
+    men_per_gang = input_file_name[2].split('=')[1].strip()
 
-        buffer_time = int(input_file_name[3].split('=')[1].strip())
-        productivity_rate = int(input_file_name[4].split('=')[1].strip())
-        number_of_units_to_produce = int(input_file_name[5].split('=')[1].strip())
-        hours_per_day = int(input_file_name[6].split('=')[1].strip())
-        days_per_week = int(input_file_name[7].split('=')[1].strip())
+    buffer_time = int(input_file_name[3].split('=')[1].strip())
+    productivity_rate = int(input_file_name[4].split('=')[1].strip())
+    number_of_units_to_produce = int(input_file_name[5].split('=')[1].strip())
+    hours_per_day = int(input_file_name[6].split('=')[1].strip())
+    days_per_week = int(input_file_name[7].split('=')[1].strip())
 
-        activity_names = get_names_list(activity_names)
-        man_hours_per_unit = get_int_list(man_hours_per_unit)
-        men_per_gang = get_int_list(men_per_gang)
+    activity_names = get_names_list(activity_names)
+    man_hours_per_unit = get_int_list(man_hours_per_unit)
+    men_per_gang = get_int_list(men_per_gang)
 
-        return activity_names, man_hours_per_unit, men_per_gang,\
-        buffer_time, productivity_rate, number_of_units_to_produce,\
-        hours_per_day, days_per_week
-    return
+    return activity_names, man_hours_per_unit, men_per_gang,\
+    buffer_time, productivity_rate, number_of_units_to_produce,\
+    hours_per_day, days_per_week
 
 def excel_table(headings, cell_values):
     """Table as excel file"""
@@ -228,7 +227,7 @@ def plot_all_activities(set_of_points, ymin, ymax):
 
     plt.savefig(name + ".pdf", facecolor=fig.get_facecolor(), dpi=100)
     plt.savefig(name + ".png", facecolor=fig.get_facecolor(), dpi=100)
-    plt.show()
+    plt.show(block=False)
 
 def illustrate_lob(coord1, coord2, coord3, coord4, ymin, ymax):
     """Generate plot from points"""
@@ -327,7 +326,8 @@ class LineOfBalance:
     days_per_week : int
     ymin : int"""
 
-    def __init__(self, activity_names, man_hours_per_unit, men_per_gang, buffer_time, productivity_rate, number_of_units_to_produce, hours_per_day, days_per_week, ymin=0):
+    def __init__(self, activity_names, man_hours_per_unit, men_per_gang, buffer_time,
+        productivity_rate, number_of_units_to_produce, hours_per_day, days_per_week, ymin=0):
 
         self.activity_names = activity_names
         self.man_hours_per_unit = man_hours_per_unit
