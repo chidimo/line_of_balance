@@ -8,9 +8,7 @@ Calculations and plotting of line of balance curve as taught by Dr. Ibrahim Odeh
 ## Installation
 
 1. Download and install [anaconda](https://www.continuum.io/downloads) It comes at about 400MB so you might want to use a wifi connection.
-
 1. After installation, go to start menu (windows), locate anaconda folder. Open anaconda prompt.
-
 1. Install with ::
 
     pip install https://github.com/Parousiaic/line_of_balance/archive/master.zip
@@ -31,19 +29,22 @@ Creating a virtual environment
 ### Using the functions
     import line_of_balance
 
-### To see an illustration of the concept of line of balance call the illustrate function
+### Illustration of the concept
+
     line_of_balance.illustrate()
 
-### In case you have a list of points to use for the illustration, call it like this
+### Illustration with your own points
     line_of_balance.illustrate_lob(list_of_points)
 
-### To plot a curve using default dataset provided with this package
+### Plot curve with provided dataset
     line_of_balance.default_lob()
 
-### To plot a curve using your own dataset. Be sure that your data is in the format show in the example dataset. You can choose the input file via a file dialog which is fired up if `tkinter` is available on your system. Otherwise it will ask you to manually supply the path to your input file.
+### Plot a curve using your own dataset.
+
+Be sure that your data is in the format show in the example dataset. You can choose the input file via a file dialog which is fired up if `tkinter` is available on your system. Otherwise it will ask you to manually supply the path to your input file.
     line_of_balance.plot_lob_curve()
 
-This function returns a `line_of_balance.line_of_balance.LineOfBalance` object which you can manipulate. The plot is not show, rather you can see a pdf and a png output in the same directory from where you run the program. But if you have `tkinter` you can specify a directory to save the output.
+This function also returns a `line_of_balance.line_of_balance.LineOfBalance` object which you can manipulate. The plot is not show, rather you can see a pdf and a png output in the same directory from where you run the program. But if you have `tkinter` you can specify a directory to save the output.
 
 The `line_of_balance.line_of_balance.LineOfBalance` can be initialized as shown below
 
