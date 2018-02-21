@@ -7,7 +7,7 @@ Calculations and plotting of line of balance curve as taught by Dr. Ibrahim Odeh
 
 ## Installation
 
-1. Download and install [anaconda ](https://www.continuum.io/downloads) It comes at about 400MB so you might want to use a wifi connection.
+1. Download and install [anaconda](https://www.continuum.io/downloads) It comes at about 400MB so you might want to use a wifi connection.
 
 1. After installation, go to start menu (windows), locate anaconda folder. Open anaconda prompt.
 

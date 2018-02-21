@@ -9,7 +9,7 @@ def readme():
     with open("README.md") as rhand:
         return rhand.read()
 
-setup(name='line_of_balance',
+setup(name='lineofbalance',
       version='2.0',
       description='Plot Line of Balance curve',
       long_description=readme(),
