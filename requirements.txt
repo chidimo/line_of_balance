@@ -17,7 +17,7 @@ numpydoc==0.7.0
 openpyxl==2.5.0
 packaging==16.8
 pkginfo==1.4.1
-Pygments==2.2.0
+Pygments==2.7.4
 pyparsing==2.2.0
 python-dateutil==2.6.1
 pytz==2018.3
